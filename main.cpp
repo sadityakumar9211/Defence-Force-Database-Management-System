@@ -10,7 +10,7 @@ Saahil Sabu Hameed (2020BCS-079)
 Defence Force  = Army + Airforce
 .................................
 Army Personnel
-Sepoy->Lieutenant->Major->General->CDS
+Sepoy->Lieutenant->Major->General
 .......................................
 Airforce Personnel
 Aircraftman->Flight Lieutenant->Squadron Leader->Air Chief Marshal
@@ -46,7 +46,7 @@ using std::ios;
 using std::ofstream;
 using std::string;
 
-#include "classes.h"   //this header file contains all the class definitions
+#include "classes.h"   //header file containing the file definitions
 
 //Global Functions used for army
 void add_user(void);     //temporary function used to populate the .bin files 
@@ -348,7 +348,7 @@ void sepoy_login(void)
     cin >> sepoy_id;
     cout << "\nEnter the Password: ";
     cin >> password;
-    fstream file; //read mode
+    fstream file; //read and write mode
     file.open("sepoy.bin", ios::binary | ios::in | ios::out);
     if (!file.is_open())
     {
@@ -790,7 +790,6 @@ void modify_personel(string post_name)
                 int pos = (-1) * static_cast<int>(sizeof(obj));
                 fl.seekp(pos, ios::cur);
                 fl.write((char *)(&obj), sizeof(sepoy));
-                section_army sec_amy; //object to change the details in the section_army.bin file
                 cout << "\n\n\tRecord Updated";
                 found = true;
             }
@@ -812,7 +811,7 @@ void modify_personel(string post_name)
             fl.read((char *)&obj, sizeof(lieutenant));
             if (obj.ret_lieu_id() == id)
             {
-                obj.modify_lieutenant(); //There is some updation required like officer does not have access to change password of user.
+                obj.modify_lieutenant(); 
                 int pos = (-1) * static_cast<int>(sizeof(obj));
                 fl.seekp(pos, ios::cur);
                 fl.write((char *)(&obj), sizeof(lieutenant));
@@ -837,7 +836,7 @@ void modify_personel(string post_name)
             fl.read((char *)&obj, sizeof(Major));
             if (obj.ret_maj_id() == id)
             {
-                obj.modify_major(); //There is some updation required like officer does not have access to change password of user.
+                obj.modify_major(); 
                 int pos = (-1) * static_cast<int>(sizeof(obj));
                 fl.seekp(pos, ios::cur);
                 fl.write((char *)(&obj), sizeof(Major));

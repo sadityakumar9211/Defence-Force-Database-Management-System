@@ -142,7 +142,7 @@ void army_field()
     cout << "\n\t\tArmy Menu\n";
     cout<<"\t---------------------\n\n";
     cout << "1. Login to Personal Dashboard\n";
-    cout << "2. Section-wise weapon allocation\n"; ////////same as cds choice 1 for army
+    cout << "2. Section-wise weapon allocation\n"; 
     cout << "3. War Details\n";
     cout << "4. Exit\n";
     cout << "9. Return to Previous Menu\n";
@@ -265,7 +265,7 @@ void army_personal_dashboard(void)
         goto flag3;
 }
 
-void add_user(void)     //////////////////////
+void add_user(void)     
 {
     int choice;
     cout << "\n\t\tSELECT POST: ";
@@ -1173,7 +1173,7 @@ void modify_airforce_personel(string post_name)
             fl.read((char *)&obj, sizeof(flight_lieutenant));
             if (obj.ret_fli_lieu_id() == id)
             {
-                obj.modify_flight_lieutenant(); //There is some updation required like officer does not have access to change password of user.
+                obj.modify_flight_lieutenant(); 
                 int pos = (-1) * static_cast<int>(sizeof(obj));
                 fl.seekp(pos, ios::cur);
                 fl.write((char *)(&obj), sizeof(flight_lieutenant));
